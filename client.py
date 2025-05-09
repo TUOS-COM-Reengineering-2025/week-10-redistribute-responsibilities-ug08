@@ -7,8 +7,8 @@ from Payroll import Payroll
 
 
 def client():
-    # This mimics the behaviour of a "client" of the Banking system "server" APIs. 
-    
+    # This mimics the behaviour of a "client" of the Banking system "server" APIs.
+
     bank = Bank()
 
     branch_london = Branch(location="London")
@@ -49,7 +49,7 @@ def client():
     bank.add_funds(account=account_alice, amount=1000)
     assert account_alice.get_balance() == 1000.0
 
-    bank.add_interest(account=account_alice)
+    account_alice.add_interest()
     assert account_alice.get_balance() == 1000.0 + 0.05 * 1000.0
 
     bank.close_account(account=account_alice)

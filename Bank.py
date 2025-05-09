@@ -29,7 +29,7 @@ class Bank:
         to_branch.get_staff().append(staff)
 
     def setup_new_account(self, account: Account, customer: Customer):
-        account.set_customer(customer)
+        account.set_customer = customer
         self.accounts.append(account)
 
         if customer not in self.customers:
@@ -40,19 +40,12 @@ class Bank:
     def obtain_balance(self, account: Account):
         return account.get_balance()
 
-    def add_interest(self, account: Account):
-        balance = account.get_balance()
-        interest_rate = account.get_interest_rate()
-        interest = balance * interest_rate
-        account.set_balance(balance + interest)
-
     def add_funds(self, account: Account, amount: float):
         balance = account.get_balance()
         account.set_balance(balance + amount)
 
     def close_account(self, account: Account):
-        account.set_customer(None)
-        account.set_balance(0)
+        account.close_account()
         self.accounts.remove(account)
 
     def add_staff_member(self, branch: Branch, staff: Staff):
