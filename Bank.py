@@ -14,8 +14,8 @@ class Bank:
         self.branches = []
         self.payroll = None
 
-    def setup_branch(self, location, opening_time, staff):
-        self.branches.append(Branch(location, opening_time, staff))
+    def setup_branch(self, branch):
+        self.branches.append(branch)
 
     def close_branch(self, branch: Branch, transfer_branch: Branch):
         branch.close(transfer_branch)
@@ -49,10 +49,10 @@ class Bank:
         self.accounts.remove(account)
 
     def add_staff_member(self, branch: Branch, staff: Staff):
-        branch.get_staff().append(staff)
+        branch.add_staff(staff)
 
     def change_opening_time(self, branch: Branch, time: str):
-        self.branch_opening_times[branch] = time
+        branch.set_opening_time(time)
 
     def change_payroll_date(self, payroll: Payroll, date: str, staff_category: str):
         self.payroll = payroll
